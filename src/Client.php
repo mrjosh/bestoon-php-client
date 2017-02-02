@@ -49,7 +49,7 @@ class Client
     }
 
     /**
-     * Get expense
+     * Set expense
      *
      * @param $amount
      * @param $text
@@ -67,7 +67,7 @@ class Client
     }
 
     /**
-     * Get income
+     * Set income
      *
      * @param $amount
      * @param $text

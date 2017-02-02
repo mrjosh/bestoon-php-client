@@ -4,7 +4,12 @@ namespace Bestoon;
 
 trait Request
 {
-
+    /**
+     * Send get request with curl
+     *
+     * @param $url
+     * @return mixed
+     */
     public function get($url)
     {
         $ch = curl_init();
@@ -19,6 +24,13 @@ trait Request
         return $response;
     }
 
+    /**
+     * Send post request with curl
+     * 
+     * @param $uri
+     * @param array $options
+     * @return mixed
+     */
     public function post($uri, array $options)
     {
         $ch = curl_init($uri);
