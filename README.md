@@ -4,7 +4,7 @@
 
 you can install client with composer
 ```
-composer require bestoon/client
+composer require bestoon/client:'dev-develop'
 ```
 
 ## Usage : Setconfig
