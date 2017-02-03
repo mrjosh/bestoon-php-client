@@ -32,13 +32,13 @@ var_dump($stats);
 ### Set incom
 Set your income with icome with with amount and text in arguments
 ```php
-$client->income('1000000','Test');
+$client->setIncome('1000000','Test');
 ```
 
 ### Set expense
 Set your expense with icome with with amount and text in arguments
 ```php
-$client->expense('1000000','Test');
+$client->setExpense('1000000','Test');
 ```
 
 ### License
