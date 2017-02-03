@@ -2,16 +2,23 @@
 
 namespace Bestoon;
 
+use GuzzleHttp\Client as GuzzleClient;
+
 class Client
 {
-    use Request;
-
     /**
      * Base url of client
      *
      * @var string
      */
     protected $baseUrl = 'http://bestoon.ir';
+
+    /**
+     * Guzzle client instance
+     *
+     * @var object
+     */
+    protected $guzzle = null;
 
     /**
      * Token of client
@@ -32,6 +39,10 @@ class Client
         }
 
         $this->token = $options['token'];
+
+        $this->guzzle = new GuzzleClient([
+            'base_uri' => $this->baseUrl
+        ]);
     }
 
     /**
@@ -41,11 +52,13 @@ class Client
      */
     public function generalStat()
     {
-        $response = $this->post($this->baseUrl . '/q/generalstat/',[
-            'token' => $this->token
+        $response = $this->guzzle->post('/q/generalstat/',[
+            'form_params' => [
+                'token' => $this->token
+            ]
         ]);
 
-        return json_decode($response, true);
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -55,15 +68,15 @@ class Client
      * @param $text
      * @return mixed
      */
-    public function expense($amount, $text)
+    public function getExpense($amount, $text)
     {
-        $response = $this->post($this->baseUrl . '/submit/expense',[
+        $response = $this->guzzle->post('/submit/expense',[
             'token' => $this->token,
             'amount' => $amount,
             'text' => $text
         ]);
 
-        return json_decode($response, true);
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
@@ -73,15 +86,15 @@ class Client
      * @param $text
      * @return mixed
      */
-    public function income($amount, $text)
+    public function getIncome($amount, $text)
     {
-        $response = $this->post($this->baseUrl . '/submit/income',[
+        $response = $this->guzzle->post($this->baseUrl . '/submit/income',[
             'token' => $this->token,
             'amount' => $amount,
             'text' => $text
         ]);
 
-        return json_decode($response, true);
+        return json_decode($response->getBody()->getContents(), true);
     }
 
 }
