@@ -71,9 +71,11 @@ class Client
     public function setExpense($amount, $text)
     {
         $response = $this->guzzle->post('/submit/expense',[
-            'token' => $this->token,
-            'amount' => $amount,
-            'text' => $text
+            'form_params' => [
+                'token' => $this->token,
+                'amount' => $amount,
+                'text' => $text
+            ]
         ]);
 
         return json_decode($response->getBody()->getContents(), true);
@@ -89,9 +91,11 @@ class Client
     public function setIncome($amount, $text)
     {
         $response = $this->guzzle->post($this->baseUrl . '/submit/income',[
-            'token' => $this->token,
-            'amount' => $amount,
-            'text' => $text
+            'form_params' => [
+                'token' => $this->token,
+                'amount' => $amount,
+                'text' => $text
+            ]
         ]);
 
         return json_decode($response->getBody()->getContents(), true);
