@@ -68,7 +68,7 @@ class Client
      * @param $text
      * @return mixed
      */
-    public function getExpense($amount, $text)
+    public function setExpense($amount, $text)
     {
         $response = $this->guzzle->post('/submit/expense',[
             'token' => $this->token,
@@ -86,7 +86,7 @@ class Client
      * @param $text
      * @return mixed
      */
-    public function getIncome($amount, $text)
+    public function setIncome($amount, $text)
     {
         $response = $this->guzzle->post($this->baseUrl . '/submit/income',[
             'token' => $this->token,
