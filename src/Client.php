@@ -90,7 +90,7 @@ class Client
      */
     public function setIncome($amount, $text)
     {
-        $response = $this->guzzle->post($this->baseUrl . '/submit/income',[
+        $response = $this->guzzle->post('/submit/income',[
             'form_params' => [
                 'token' => $this->token,
                 'amount' => $amount,
