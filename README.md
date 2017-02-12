@@ -30,13 +30,13 @@ var_dump($stats);
 ```
 
 ### Set incom
-Set your income with icome with with amount and text in arguments
+Set your income with amount and text in arguments
 ```php
 $client->setIncome('1000000','Test');
 ```
 
 ### Set expense
-Set your expense with icome with with amount and text in arguments
+Set your expense with amount and text in arguments
 ```php
 $client->setExpense('1000000','Test');
 ```
